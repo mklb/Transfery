@@ -1,0 +1,57 @@
+.container
+  = render "transaction/balance"
+
+  .row.mt-5
+    .col-lg-10
+      %h1  Transactions
+    .col-lg-2
+      = link_to 'New Transaction', new_transaction_path, class: "btn btn-primary mt-2"
+
+  %table.table
+    %thead
+      %tr
+        %th ID
+        %th From
+        %th To
+        %th Value
+        %th Currency
+        %th Created at
+        %th Updated at
+
+    %tbody
+      - current_user.transactions.each do |t|
+        / show two transactions if the user converted money from one wallet to another
+        - if t.sender == t.reciever
+          %tr
+            %td= t.id
+            %td= "You"
+            %td= "You"
+            %td.text-danger= "-#{t.amount_send}"
+            %td= t.amount_send.currency
+            %td= t.created_at.strftime("%B %d, %Y %I:%M")
+            %td= t.updated_at.strftime("%B %d, %Y %I:%M")
+          %tr
+            %td= t.id
+            %td= "You"
+            %td= "You"
+            %td.text-success= "+#{t.amount_received}"
+            %td= t.amount_received.currency
+            %td= t.created_at.strftime("%B %d, %Y %I:%M")
+            %td= t.updated_at.strftime("%B %d, %Y %I:%M")
+        - else
+          %tr
+            %td= t.id
+            %td= t.sender.name
+            - if t.reciever == current_user
+              %td= "You"
+              %td.text-success= "+#{t.amount_received}"
+              %td= t.amount_received.currency
+            - else
+              %td= t.reciever.name
+              %td.text-danger= "-#{t.amount_send}"
+              %td= t.amount_send.currency
+            %td= t.created_at.strftime("%B %d, %Y %I:%M")
+            %td= t.updated_at.strftime("%B %d, %Y %I:%M")
+
+  %br
+

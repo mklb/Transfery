@@ -1,21 +1,25 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.page-holder.d-flex.align-items-center
+  .container.py-5
+    .row.align-items-center
+      .col-5.col-lg-7.mx-auto.mb-5.mb-lg-0
+        .pr-lg-5
+          %img.img-fluid{:alt => "", :src => image_path("illustration.svg")}/
+      .col-lg-5.px-lg-4
+        %h2.mb-4 Get early access 🎉
+        %p.text-muted Treat your apps right and put you on the waiting list
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "mt-4"}) do |f|
+          = devise_error_messages!
+          .form-group.mb-4
+            = f.text_field :name, autofocus: true, placeholder:"Enter your name", class: "form-control border-0 shadow form-control-lg"
+          .form-group.mb-4
+            = f.email_field :email, autocomplete: "email", placeholder:"Enter email", class: "form-control border-0 shadow form-control-lg"
+          .form-group.mb-4
+            = f.password_field :password, autocomplete: "new-password", placeholder: "Your password (#{@minimum_password_length} characters minimum)", class: "form-control border-0 shadow form-control-lg text-violet"
+          .form-group.mb-4
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirm password", class: "form-control border-0 shadow form-control-lg text-violet"
+          .form-group.mb-4
+            %p
+              = f.check_box :terms
+              I agree to the
+              = link_to "Terms of Service", terms_path, rel: "nofollow", target: "_blank"
+          = f.submit "Register now", class: "btn btn-primary shadow px-5"

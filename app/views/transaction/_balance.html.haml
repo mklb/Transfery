@@ -1,0 +1,12 @@
+.row.mt-5
+  .col-lg-12
+    %h1 Wallets
+  
+  - for c in @balance
+    .col-4.mb-4
+      .card
+        .card-body.text-center
+          %p#improvements.display-3.mb-0{style: "line-height: 1; font-weight: bold;"}
+            = c[1]
+          %p.mb-0.text-black-50
+            = c[0]

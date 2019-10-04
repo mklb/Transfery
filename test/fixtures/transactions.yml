@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: 
+  reciever: 
+  amount: 1
+  currency: MyString
+
+two:
+  sender: 
+  reciever: 
+  amount: 1
+  currency: MyString

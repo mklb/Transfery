@@ -1,0 +1,10 @@
+.container
+  .frontpage-section.pricing-header.px-3.py-3.pt-md-5.pb-md-4.mx-auto.text-center.mb-5.mt-5
+    %h1.display-4.font-weight-bold.mb-5.mt-5
+      Send money everywhere
+      %br
+      %small
+        Tax free. No one will notice!
+    %p.lead This service is totally legit
+    - unless user_signed_in?
+      = link_to "Try it for free", new_user_registration_path, class: "btn btn-primary btn-lg"

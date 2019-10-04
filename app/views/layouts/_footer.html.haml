@@ -1,0 +1,26 @@
+%footer.pt-5.pb-5.border-top
+  .container
+    .row
+      .col-6
+        %p.my-0.mr-md-auto.navbar-brand.text-dark.text-uppercase Transfery
+        %p.text-muted
+          The service for sending money fast
+          %br
+          Made with ❤ in Berlin
+        %small.d-block.mb-3.text-muted © 2018-2019
+      .col-md
+        %h5 Resources
+        %ul.list-unstyled.text-small
+          %li
+            %a.text-muted{:href => "#"} F.A.Q.
+          %li
+            %a.text-muted{:href => "#"} Help Center
+      .col-md
+        %h5 About
+        %ul.list-unstyled.text-small
+          %li
+            = link_to "Terms of Service", terms_path, class: "text-muted", rel: "nofollow"
+          %li
+            = link_to "Privacy", privacy_path, class: "text-muted", rel: "nofollow"
+          %li
+            = link_to "Imprint", imprint_path, class: "text-muted", rel: "nofollow"

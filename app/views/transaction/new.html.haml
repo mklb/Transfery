@@ -1,0 +1,26 @@
+.container
+  = render "transaction/balance"
+  = print @transaction
+  .row.justify-content-md-center.mb-5.mt-5
+    .col.col-lg-6.mb-5.mt-5
+      = form_tag(transaction_path, :method => "post", id: "search-form", class: "form") do
+        - if @transaction.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@transaction.errors.count, "error")} prohibited this transaction from being saved:"
+            %ul
+              - @transaction.errors.full_messages.each do |message|
+                %li= message
+        .form-group
+          = label_tag 'amount_send_cents', 'Money'
+          = number_field_tag "amount_send_cents", nil, min: 0, step: 0.01, class: "form-control"
+        .form-group
+          = label_tag 'currency_sender', 'From currency wallet'
+          = select_tag :currency_sender, options_for_select(Transaction.currencies.keys.to_a), class: "form-control"
+        .form-group
+          = label_tag 'receiver', 'Send to a friend'
+          = select_tag "receiver", options_from_collection_for_select(@possible_receivers, "id", "name", "0"), include_blank: true, class: "custom-select"
+        .form-group
+          = label_tag 'currency_reciever', 'In currency'
+          = select_tag :currency_reciever, options_for_select(Transaction.currencies.keys.to_a), class: "form-control"
+
+        = submit_tag "Send money", class: "btn btn-danger btn-block"
