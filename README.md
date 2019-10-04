@@ -1,5 +1,5 @@
 # README
-The documentation is not 100% clear so this is what will happen:
+The documentation is not 100% clear so I made some assumptions:
 
 - The user is able to send funds to users in a currency as long as he has enough founds in the currency (wallet)
 
@@ -10,6 +10,8 @@ The documentation is not 100% clear so this is what will happen:
 - The app uses the openexchangerates.org API for calculation exchange rates. It caches the results but sometimes exchange rates are just 1:1..I would investigate this issue but I have no more time left to code today. Fallback rates are implemented (`./config/initializers/money.rb`)
 
 - The app is not optimized for mobile
+
+- Users need to accept the Terms of Conditions...we love germany!
 
 ## Setup
 There are 4 default users available (details: `./db/seeds.rb`)
