@@ -14,6 +14,6 @@ class Transaction < ApplicationRecord
   belongs_to :sender, class_name: "User"
   belongs_to :reciever, class_name: "User"
 
+  # this is where we allow new currencies
   enum currencies: ["USD", "EUR", "GBP"]
-
 end

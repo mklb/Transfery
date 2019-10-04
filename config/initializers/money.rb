@@ -15,7 +15,7 @@ oxr.cache = Proc.new do |text|
     Rails.cache.read(OXR_CACHE_KEY)
   end
 end
-# TODO: delete demo account ;)
+# TODO: delete demo account since this key is public ;)
 oxr.app_id = "bf3501a27de6498f9bcbd2607762125c"
 oxr.show_alternative = true
 oxr.prettyprint = false
@@ -23,4 +23,11 @@ oxr.update_rates
 
 MoneyRails.configure do |config|
   config.default_bank = oxr
+  # fallback
+  config.add_rate "USD", "GBP", 0.81
+  config.add_rate "USD", "EUR", 0.91
+  config.add_rate "GBP", "EUR", 1.12
+  config.add_rate "GBP", "USD", 1.23
+  config.add_rate "EUR", "USD", 1.1
+  config.add_rate "EUR", "GBP", 0.89
 end

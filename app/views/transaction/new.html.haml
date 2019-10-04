@@ -1,8 +1,7 @@
 .container
-  = render "transaction/balance"
-  = print @transaction
   .row.justify-content-md-center.mb-5.mt-5
-    .col.col-lg-6.mb-5.mt-5
+    .col.col-lg-6.mb-5.mt-5.pb-3.bg-light
+      = render "transaction/balance", small: true
       = form_tag(transaction_path, :method => "post", id: "search-form", class: "form") do
         - if @transaction.errors.any?
           #error_explanation

@@ -1,5 +1,4 @@
 class StaticController < ApplicationController
-  before_action :authenticate_user!, only: [:faq]
 
   def home
   end
@@ -14,6 +13,5 @@ class StaticController < ApplicationController
   end
 
   def faq
-    render layout: "user_dashboard"
   end
 end

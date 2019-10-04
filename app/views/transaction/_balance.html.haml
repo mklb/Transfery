@@ -1,12 +1,19 @@
-.row.mt-5
+.row
   .col-lg-12
-    %h1 Wallets
+    - if small
+      %h1.h4.mt-3.text-center.mb-3 Send money from your wallets
+    - else
+      %h1.mt-5 Wallets
   
   - for c in @balance
     .col-4.mb-4
       .card
         .card-body.text-center
-          %p#improvements.display-3.mb-0{style: "line-height: 1; font-weight: bold;"}
-            = c[1]
+          - if small
+            %p#improvements.mb-0{style: "line-height: 1; font-weight: bold;"}
+              = c[1]
+          - else
+            %p#improvements.display-3.mb-0{style: "line-height: 1; font-weight: bold;"}
+              = c[1]
           %p.mb-0.text-black-50
             = c[0]

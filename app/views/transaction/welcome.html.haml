@@ -1,5 +1,5 @@
 .container
-  = render "transaction/balance"
+  = render "transaction/balance", small: false
 
   .row.mt-5
     .col-lg-10
@@ -52,6 +52,3 @@
               %td= t.amount_send.currency
             %td= t.created_at.strftime("%B %d, %Y %I:%M")
             %td= t.updated_at.strftime("%B %d, %Y %I:%M")
-
-  %br
-
